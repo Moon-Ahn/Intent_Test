@@ -10,10 +10,10 @@ class RRBroadcastReceiver(private val activity: MainActivity) : BroadcastReceive
     constructor() : this(activity = MainActivity())
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        if (intent != null && intent.action == "com.example.receiverapp.ACTION_SEND_UPDATE") {
+        if (intent != null && intent.action == "com.twobeone.rader.event.handgesture") {
 
             // Put the intent value corresponding to your code instead of the gesture
-            val gesture = intent.getStringExtra("gesture")
+            val gesture = intent.getStringExtra( "handGestureType")
             Log.d("RRreceiver", "Received gesture: $gesture")
 
             // Create a PendingResult to keep the app alive

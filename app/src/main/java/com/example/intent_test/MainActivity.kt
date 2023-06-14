@@ -1,15 +1,16 @@
 package com.example.intent_test
+
 import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.intent_test.RRBroadcastReceiver
 
 class MainActivity : AppCompatActivity() {
     private lateinit var textView: TextView
     private lateinit var textView2: TextView
     private var e = 0
-    private val receiver = RRBroadcastReceiver(this)
+
+    private lateinit var receiver: RRBroadcastReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,9 +19,13 @@ class MainActivity : AppCompatActivity() {
         textView = findViewById(R.id.intent_text)
         textView2 = findViewById(R.id.count_text)
 
-        // Register the receiver to receive the intent data
-        val filter = IntentFilter("com.example.receiverapp.ACTION_SEND_UPDATE")
-        registerReceiver(receiver, filter,"com.example.intent_test.permission.MY_PERMISSION",null)
+        // Create an instance of the receiver
+        receiver = RRBroadcastReceiver(this)
+
+        // Dynamically register the receiver with an IntentFilter
+        val filter = IntentFilter("com.twobeone.rader.event.handgesture")
+        //registerReceiver(receiver, filter, "com.example.intent_test.permission.MY_PERMISSION", null)
+        registerReceiver(receiver, filter)
     }
 
     fun updateTextView(gesture: String?) {

@@ -22,17 +22,7 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <receiver
-            android:name="com.example.intent_test.RRBroadcastReceiver"
-            android:permission="com.example.intent_test.permission.MY_PERMISSION"
-            android:exported="true"
-            android:enabled="true">
-            <intent-filter>
-                <action android:name="com.example.receiverapp.ACTION_SEND_UPDATE" />
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
